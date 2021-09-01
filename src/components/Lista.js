@@ -22,10 +22,4 @@ export default [
     {task: "Fazer tarefa 12", done: false},
     {task: "Fazer tarefa 12", done: false},
     {task: "Fazer tarefa 12", done: false},
-    {task: "Fazer tarefa 12", done: false},
-    {task: "Fazer tarefa 12", done: false},
-    {task: "Fazer tarefa 12", done: false},
-    {task: "Fazer tarefa 12", done: false},
-    {task: "Fazer tarefa 12", done: false},
-    {task: "Fazer tarefa 12", done: false},
 ]
