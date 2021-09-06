@@ -1,8 +1,6 @@
 import React from 'react';
 import { Text, StyleSheet, TouchableOpacity} from 'react-native';
 
-
-
 export function Botao({text, ...rest}){
     return(
         <TouchableOpacity style={styles.button} {...rest}>

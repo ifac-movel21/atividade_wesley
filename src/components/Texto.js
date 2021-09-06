@@ -1,7 +1,6 @@
 import React from 'react';
 import { Text, StyleSheet } from 'react-native';
 
-
 export function TextoDosInput({upText}){
     return(
         <Text style={styles.texto}>
