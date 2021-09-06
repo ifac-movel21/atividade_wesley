@@ -1,11 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {
-    View, 
-    Text, 
+    View,
     StyleSheet,
-    TouchableOpacity,
     ScrollView,
-    FlatList
+    FlatList,
 } from 'react-native';
 import { Botao } from './components/Botao';
 import { InputText } from './components/InputText';
@@ -22,9 +20,10 @@ export function Home(){
     const [newResultado, setResultado] = useState('');
 
     const calculaMedia = () => {
-        let n1 = parseFloat(newN1);
-        let n2 = parseFloat(newN2);
+        let n1 = parseInt(newN1);
+        let n2 = parseInt(newN2);
         let falta = parseInt(newFalta);
+        let aulas = parseInt(newQuantidadeAulas);
 
         let media = ((n1 + n2) / 2 );
 
@@ -32,7 +31,7 @@ export function Home(){
             setResultado("Aluno reprovado por média")
         }
         if(media < 7 && falta >= 25){
-            setResultado ("Aluno reprovado por média e faltas")
+            setResultado ("Rep média e faltas")
         }
         if(media > 7 && falta < 25){
             setResultado("Aluno aprovado!")
@@ -40,6 +39,7 @@ export function Home(){
         if(media > 7 && falta >= 25){
             setResultado("Aluno reporvado por faltas")
         }
+
     }
     
     const mostraLista = () => {
@@ -48,6 +48,7 @@ export function Home(){
     
     return(
         <ScrollView 
+            nestedScrollEnabled={true}
             style={styles.home}
             showsVerticalScrollIndicator={false}
         >
@@ -112,16 +113,16 @@ export function Home(){
 
             {/* Button mostrar a lista */}
             <Botao 
-                text="Listar atividades"
+                text={newResultado}
             />
         
           
             <View>
-                <FlatList style={[styles.blocOneText, {marginTop:10, maxHeight: 400}]}
-                        showsVerticalScrollIndicator={true} 
-                        data={Lista}
-                        renderItem={({item}) => <Task  data = {item} />}
-                        
+                <FlatList style={styles.blocOneText}
+                    nestedScrollEnabled={true}
+                    showsVerticalScrollIndicator={true} 
+                    data={Lista}
+                    renderItem={({item}) => <Task  data = {item} />}
                 />
             </View>
            
@@ -139,10 +140,11 @@ const styles = StyleSheet.create({
     
     blocOneText: {
         backgroundColor: '#1E1E1E',
-        width: 381,
-        flexWrap: 'wrap',
+        width: '100%',
         borderRadius: 5,
-        marginTop:15
+        marginTop:15,
+        maxHeight: 300,
+        padding: 10,
     },
     viewInput: {
         marginTop: 5,

@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import { marginLeft } from 'styled-system';
 
 
 export default (props) => {
@@ -25,13 +26,13 @@ const styles = StyleSheet.create({
     taskItem: {
         flex: 1,
         backgroundColor: '#333',
-        width: 350,
+        width: '100%',
         height: 40,
-        marginTop: 10,
-        marginLeft: 15,
+        marginBottom: 10,
+        borderRadius: 7,
         flexDirection: 'row',
         alignItems: 'center',
-        borderRadius: 7,
+        justifyContent: "space-between"
     },
     checkButton: {
         width: 20,
@@ -45,8 +46,7 @@ const styles = StyleSheet.create({
     texto: {
         color: '#FFF',
         fontSize: 22,
-        marginTop: 5,
-        marginBottom: 5,
-        fontWeight: "bold"
+        fontWeight: "bold",
+        marginLeft: 10
     },
 })
