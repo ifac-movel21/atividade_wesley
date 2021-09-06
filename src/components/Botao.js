@@ -14,8 +14,6 @@ export function Botao({text, ...rest}){
     );
 }
 
-
-
 const styles = StyleSheet.create({
     button: {
         backgroundColor: '#059862',
