@@ -1,22 +1,18 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-import { marginLeft } from 'styled-system';
-
 
 export default (props) => {
     return(
         <TouchableOpacity 
             style={styles.taskItem} 
-            onPress={() => {} } activeOpacity={.1}
+            onPress={() => {} } activeOpacity={.6}
         >
             <>
                 <Text style={styles.texto}>
                     {props.data.task}
                 </Text>
                 
-                <View style={styles.checkButton}>
-
-                </View>
+                <View style={styles.checkButton} />
             </>
         </TouchableOpacity>
     );
@@ -25,9 +21,9 @@ export default (props) => {
 const styles = StyleSheet.create({
     taskItem: {
         flex: 1,
-        backgroundColor: '#333',
+        backgroundColor: '#3AAFAB',
         width: '100%',
-        height: 40,
+        height: 50,
         marginBottom: 10,
         borderRadius: 7,
         flexDirection: 'row',

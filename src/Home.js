@@ -1,51 +1,62 @@
 import React, {useEffect, useState} from 'react';
 import {
+    Text,
     View,
     StyleSheet,
     ScrollView,
-    FlatList,
 } from 'react-native';
+
 import { Botao } from './components/Botao';
 import { InputText } from './components/InputText';
 import { TextoDosInput } from './components/Texto';
-import Lista from './components/Lista';
-import Task from './components/Task';
+import { TaskList } from './components/ScrollList';
+import { ModalView } from './components/Modal';
+import { BoxText } from './components/BoxText';
 
 export function Home(){
-    const [newN1, setN1] = useState('');
-    const [newN2, setN2] = useState('');
-    const [newFalta, setFalta] = useState('');
-    const [newQuantidadeAulas, setQuantidadeAulas] = useState('');
-
-    const [newResultado, setResultado] = useState('');
-
-    const calculaMedia = () => {
+    const [newNomeAluno, setNomeAluno] = useState('');
+    const [newNomeCurso, setNomeCurso] = useState('');
+    const [newNomeDisciplina, setNomeDisciplina] = useState('');
+    const [newN1, setN1] = useState(0);
+    const [newN2, setN2] = useState(0);
+    const [newFalta, setFalta] = useState(0);
+    const [newQuantidadeAulas, setQuantidadeAulas] = useState(0);
+    const [newResultado, setResultado] = useState(0);
+    
+    const [newSituacao, setSituacao] = useState('');
+    
+    const [modalVisible, setModalVisible] = useState(false);
+    const [modalResultVisible, setModalResultVisible] = useState(false);
+    
+    function showListModal(){
+        setModalVisible(!modalVisible)
+    }
+    function showResultModal(){
+        setModalResultVisible(!modalResultVisible)
+    }
+    
+    useEffect(() => {
         let n1 = parseInt(newN1);
         let n2 = parseInt(newN2);
-        let falta = parseInt(newFalta);
-        let aulas = parseInt(newQuantidadeAulas);
-
-        let media = ((n1 + n2) / 2 );
-
-        if(media < 7){
-            setResultado("Aluno reprovado por média")
-        }
-        if(media < 7 && falta >= 25){
-            setResultado ("Rep média e faltas")
-        }
-        if(media > 7 && falta < 25){
-            setResultado("Aluno aprovado!")
-        }
-        if(media > 7 && falta >= 25){
-            setResultado("Aluno reporvado por faltas")
-        }
-
-    }
-    
-    const mostraLista = () => {
         
-    }
+        let media = ((n1 + n2) / 2)
+
+            if(media < 7){
+                setSituacao("Aluno reprovado por média")
+            }
+            if(media < 7 && newFalta >= 25){
+                setSituacao ("Rep média e newFaltas")
+            }
+            if(media > 7 && newFalta < 25){
+                setSituacao("Aluno aprovado!")
+            }
+            if(media > 7 && newFalta >= 25){
+                setSituacao("Aluno reporvado por faltas")
+            }
+
+    }, [newFalta])
     
+
     return(
         <ScrollView 
             nestedScrollEnabled={true}
@@ -55,10 +66,11 @@ export function Home(){
             {/* inicio do formulario */}
             <TextoDosInput 
                 upText="Nome do aluno"
+                
             />
             <InputText 
                 placeHolder="Eduardo José"
-                
+                onChangeText={setNomeAluno}
             />
             
             <TextoDosInput 
@@ -66,20 +78,22 @@ export function Home(){
             />
             <InputText
                 placeHolder="Filosofia"
+                onChangeText={setNomeCurso}
             />
 
             <TextoDosInput 
                 upText="Disciplina" 
             />
             <InputText 
-                placeHolder="Introdução a Filosofia" 
+                placeHolder="Introdução a Filosofia"
+                onChangeText={setNomeDisciplina} 
             />
             
             <TextoDosInput upText="N1" />
             <InputText 
                 placeHolder="7.0" 
                 keyboardType={'numeric'}
-                onChangeText={setN1}    
+                onChangeText={setN1}  
             />
             
             <TextoDosInput upText="N2" />
@@ -103,29 +117,56 @@ export function Home(){
                 onChangeText={setFalta}
             />
             {/* Fim do formulario */}
-            
-            <Botao 
+            <Botao
+                cor={"#059862"} 
                 text="Verificar"
-                onPress={calculaMedia}
+                marginTop={5}
+                onPress={ showResultModal }
+                
             />
             {/* add o modal para mostrar os status do aluno */}
-            
+            <ModalView 
+                    visible={modalResultVisible}
+                >
+                <BoxText 
+                    nomeAluno={newNomeAluno}
+                    curso={newNomeCurso}
+                    disciplina={newNomeDisciplina}
+                    n1={newN1}
+                    n2={newN2}
+                    resultado={newSituacao}
 
-            {/* Button mostrar a lista */}
-            <Botao 
-                text={newResultado}
-            />
-        
-          
-            <View>
-                <FlatList style={styles.blocOneText}
-                    nestedScrollEnabled={true}
-                    showsVerticalScrollIndicator={true} 
-                    data={Lista}
-                    renderItem={({item}) => <Task  data = {item} />}
                 />
-            </View>
+                <Botao 
+                    marginTop={10}
+                    cor={"#FF4C57"}
+                    text={"Fechar"}
+                    onPress={showResultModal}
+                />
+            </ModalView>
+            
+            <Botao
+                cor={"#059862"} 
+                text="Mostrar tarefas"
+                marginTop={10}
+                onPress={showListModal}
+            />
+            {/* Modal task list */}
+            <ModalView visible={modalVisible}>
            
+                <InputText />
+                
+                <TaskList />
+                
+                <Botao 
+                    marginTop={10}
+                    cor={"#FF4C57"}
+                    text={"Fechar"}
+                    onPress={showListModal}
+                />
+            </ModalView>
+
+            <View style={styles.footer} />
 
         </ScrollView>
     );
@@ -135,7 +176,7 @@ const styles = StyleSheet.create({
     home: {
         flex: 1,
         backgroundColor: '#3AAFAB',
-        paddingHorizontal: 30
+        paddingHorizontal: 30,
     },
     
     blocOneText: {
@@ -161,6 +202,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         padding: 10,
     },
-    
+    footer: {
+        width: '100%',
+        height: 10
+    }
     
 })

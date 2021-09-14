@@ -1,9 +1,9 @@
 import React from 'react';
 import { Text, StyleSheet } from 'react-native';
 
-export function TextoDosInput({upText}){
+export function TextoDosInput({upText, ...rest}){
     return(
-        <Text style={styles.texto}>
+        <Text style={[styles.texto, {...rest}]}>
             {upText}
         </Text>
     );

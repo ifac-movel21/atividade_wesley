@@ -1,26 +1,28 @@
 import React from 'react';
 import { Text, StyleSheet, TouchableOpacity} from 'react-native';
 
-export function Botao({text, ...rest}){
+export function Botao({cor, text, ...rest}){
     return(
-        <TouchableOpacity style={styles.button} {...rest}>
+        <TouchableOpacity
+            activeOpacity={.6} 
+            style={[styles.button, {backgroundColor: cor, ...rest}]} 
+            {...rest}
+        >
             <Text style={styles.texto}>
                 {text}
             </Text>
-        </TouchableOpacity>       
-
+        </TouchableOpacity>
     );
 }
 
 const styles = StyleSheet.create({
     button: {
-        backgroundColor: '#059862',
+        backgroundColor:"#FF4C57",
         width: 200,
         height: 60,
         alignItems: 'center',
         justifyContent: 'center',
         alignSelf:'center',
-        marginTop: 10,
         borderRadius: 10,
     },
     texto: {
