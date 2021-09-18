@@ -1,4 +1,9 @@
 {
   "name": "rn06",
-  "displayName": "rn06"
+  "displayName": "rn06",
+  "splash": {
+    "image": "./assets/splash.png",
+    "resizeMode": "contain",
+    "backgroundColor": "#0D133E"
+  }
 }

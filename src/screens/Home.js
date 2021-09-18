@@ -6,12 +6,12 @@ import {
     ScrollView,
 } from 'react-native';
 
-import { Botao } from './components/Botao';
-import { InputText } from './components/InputText';
-import { TextoDosInput } from './components/Texto';
-import { TaskList } from './components/ScrollList';
-import { ModalView } from './components/Modal';
-import { BoxText } from './components/BoxText';
+import { Botao } from '../components/Botao';
+import { InputText } from '../components/InputText';
+import { TextoDosInput } from '../components/Texto';
+import { TaskList } from '../components/ScrollList';
+import { ModalView } from '../components/Modal';
+import { BoxText } from '../components/BoxText';
 
 export function Home(){
     const [newNomeAluno, setNomeAluno] = useState('');
@@ -126,8 +126,8 @@ export function Home(){
             />
             {/* add o modal para mostrar os status do aluno */}
             <ModalView 
-                    visible={modalResultVisible}
-                >
+                visible={modalResultVisible}
+            >
                 <BoxText 
                     nomeAluno={newNomeAluno}
                     curso={newNomeCurso}
@@ -135,11 +135,10 @@ export function Home(){
                     n1={newN1}
                     n2={newN2}
                     resultado={newSituacao}
-
                 />
                 <Botao 
                     marginTop={10}
-                    cor={"#FF4C57"}
+                    cor={"#E83F5B"}
                     text={"Fechar"}
                     onPress={showResultModal}
                 />
@@ -154,13 +153,15 @@ export function Home(){
             {/* Modal task list */}
             <ModalView visible={modalVisible}>
            
-                <InputText />
+                <InputText 
+                    placeHolder={"Digite uma nova tarefa"}
+                />
                 
                 <TaskList />
                 
                 <Botao 
                     marginTop={10}
-                    cor={"#FF4C57"}
+                    cor={"#E83F5B"}
                     text={"Fechar"}
                     onPress={showListModal}
                 />

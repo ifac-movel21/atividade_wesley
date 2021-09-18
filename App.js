@@ -1,10 +1,12 @@
 import React from 'react';
-import { Home } from './src/Home';
+import { Routes } from './src/routes/rotaIndex';
+import { Home } from './src/screens/Home';
+import { Index } from './src/screens/Index';
 
 
 
 export default function App(){
     return(
-        <Home />
+        <Routes />
     );
 }

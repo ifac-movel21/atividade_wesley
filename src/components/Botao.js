@@ -1,11 +1,11 @@
 import React from 'react';
 import { Text, StyleSheet, TouchableOpacity} from 'react-native';
 
-export function Botao({cor, text, ...rest}){
+export function Botao({FontSize, cor, text, ...rest}){
     return(
         <TouchableOpacity
             activeOpacity={.6} 
-            style={[styles.button, {backgroundColor: cor, ...rest}]} 
+            style={[styles.button, {backgroundColor: cor, FontSize, ...rest}]} 
             {...rest}
         >
             <Text style={styles.texto}>
@@ -27,6 +27,6 @@ const styles = StyleSheet.create({
     },
     texto: {
         color: '#FFF',
-        fontSize: 22,
+        fontSize: 26,
     },
 })
