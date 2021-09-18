@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, StyleSheet, View, FlatList} from 'react-native';
+import { StyleSheet, FlatList} from 'react-native';
 
 import Lista from './Lista';
 import Task from './Task';

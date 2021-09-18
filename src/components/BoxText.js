@@ -2,8 +2,6 @@ import React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 import { TextoDosInput } from './Texto';
 
-
-
 export function BoxText({nomeAluno, curso, disciplina, n1, n2, resultado}){
     return(
         <View style={styles.box}>
