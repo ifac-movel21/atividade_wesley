@@ -13,12 +13,13 @@ export function Index(){
     const navigation = useNavigation();
 
     function handleLogar(){
-        navigation.navigate('Home');
+        navigation.navigate('PerfilAluno');
     }
     
     return(
         <View style={styles.container}>
             <Image
+                style={styles.img}
                 source={HomeImg}
             />
 
@@ -29,7 +30,7 @@ export function Index(){
             <Botao 
                 text={"Entrar"}
                 cor={'#059862'}
-                marginTop={130}
+                marginTop={100}
                 onPress={handleLogar}
             />
         </View>
@@ -48,5 +49,8 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         color: '#008669',
         marginTop: -40
+    },
+    img: {
+        marginTop: -60
     }
 })
