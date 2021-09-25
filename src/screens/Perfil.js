@@ -1,10 +1,10 @@
-import { Center } from 'native-base';
 import React from 'react';
-import { View, Text, StyleSheet, Image} from 'react-native';
-import { faBriefcase, faGraduationCap, faUserGraduate } from '@fortawesome/free-solid-svg-icons';
+import { View, Text, StyleSheet, Image, ScrollView, FlatList} from 'react-native';
+import { faBriefcase, faUserGraduate } from '@fortawesome/free-solid-svg-icons';
 
 import { Card } from '../components/Card';
 import SvgIcon from '../../assets/box.svg';
+import { marginTop } from 'styled-system';
 
 export function PerfilAluno(){
     return(
@@ -23,19 +23,19 @@ export function PerfilAluno(){
             {/*  */}
             <View style={styles.points}>
                 <View style={styles.status}>
-                    <Text style={styles.text} >Tarefas</Text>
-                    <Text style={styles.text} >Concluídas</Text>
-                    <Text style={styles.number} >28</Text>
+                    <Text style={styles.text}> Tarefas</Text>
+                    <Text style={styles.text}> Concluídas</Text>
+                    <Text style={styles.number}> 28</Text>
                 </View>
                 <View style={styles.status}>
-                    <Text style={styles.text} >Média</Text>
-                    <Text style={styles.text} >Geral</Text>
-                    <Text style={styles.number} >73</Text>
+                    <Text style={styles.text}> Média </Text>
+                    <Text style={styles.text}> Geral </Text>
+                    <Text style={styles.number}> 73 </Text>
                 </View>
                 <View style={styles.status}>
-                    <Text style={styles.text} >Índice</Text>
-                    <Text style={styles.text} >Acadêmico</Text>
-                    <Text style={styles.number} >18</Text>
+                    <Text style={styles.text}> Índice </Text>
+                    <Text style={styles.text}> Acadêmico </Text>
+                    <Text style={styles.number}> 18 </Text>
                 </View>
             </View>
             {/*  */}
@@ -45,20 +45,26 @@ export function PerfilAluno(){
                 </Text>
             </View>
             {/*  */}
-            <View style={styles.cardProfileContainer}>
+            {/* <View style={styles.cardProfileContainer}>
                 <Card 
                     backgroundColor={'#8CCEC5'}
                     icone={faUserGraduate}
                     text={'Educação'}
                     number={2}
+                    iconColor={'#8CCEC5'}
+                    navScreen={'Home'}
                 />
                 <Card 
                     backgroundColor={'#FFBB51'}
                     icone={faBriefcase}
                     text={'Profissional'}
                     number={4}
+                    iconColor={'#FFBB51'}
+                    navScreen={'Index'}
                 />
-            </View>
+            </View> */}
+            <ScrollView />
+               
         </View>
     );
 }
@@ -89,6 +95,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         padding: 10,
+        marginTop: '10%'
     },
     status: {
         alignItems: 'center'
@@ -97,7 +104,8 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 50,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        marginTop: '5%'
     },
     completeProfileText: {
         fontWeight: '600',
@@ -115,8 +123,15 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         width: '100%',
-        height: 200,
+        height: '26%',
         paddingHorizontal: 15,
         paddingVertical: 15,
+        marginTop: '5%'
+    },
+    list: {
+        backgroundColor: '#F0F0F0',
+        borderRadius: 5,
+        maxHeight: '35%',
+        maxWidth: '100%'
     }
 })

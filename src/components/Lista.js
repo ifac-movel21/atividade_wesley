@@ -10,4 +10,11 @@ export default [
     {task: "Tarefa 09", done: true},
     {task: "Tarefa 10", done: false},
     {task: "Tarefa 11", done: true},
+    {task: "Tarefa 11", done: true},
+    {task: "Tarefa 11", done: true},
+    {task: "Tarefa 11", done: true},
+    {task: "Tarefa 11", done: true},
+    {task: "Tarefa 11", done: true},
+    {task: "Tarefa 11", done: true},
+    {task: "Tarefa 11", done: true},
 ]

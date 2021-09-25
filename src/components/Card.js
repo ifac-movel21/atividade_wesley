@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet} from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { alignSelf, marginBottom, marginLeft, marginTop } from 'styled-system';
+import { useNavigation } from '@react-navigation/native';
 
-export function Card({backgroundColor, icone, text, number, ...rest}){
+export function Card({backgroundColor, icone, text, number, iconColor, navScreen, ...rest}){
 
     const [newNumber, setNumber] = useState('');
 
@@ -18,24 +18,30 @@ export function Card({backgroundColor, icone, text, number, ...rest}){
 
     },[number])
 
+    const navigation = useNavigation();
+
+    function handleAtividade(){
+        navigation.navigate(navScreen);
+    }
+
     return(
         <View style={[styles.cardContainer, {backgroundColor: backgroundColor}]}>
             <View style={styles.iconContainer}>
-                <FontAwesomeIcon icon={icone} size={30} style={styles.icon} />
+                <FontAwesomeIcon icon={icone} size={30} color={iconColor} />
             </View>
             <Text style={styles.text}> {text} </Text>
             <Text style={styles.textPassos}> { number } {newNumber} </Text>
             <Text style={styles.textPassos}> Faltando </Text>
             <View style={styles.line} />
-            <FontAwesomeIcon icon={faArrowRight} style={styles.arrow} size={25} onPress={() => {}} />
+            <FontAwesomeIcon icon={faArrowRight} style={styles.arrow} size={25} onPress={handleAtividade} />
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     cardContainer: {
-        width: 155,
-        height: 190,
+        width: '46%',
+        height: '100%',
         borderRadius: 15,
         padding: 10,
     },
@@ -46,9 +52,6 @@ const styles = StyleSheet.create({
         height: 50,
         borderRadius: 20,
         backgroundColor: '#FFF'
-    },
-    icon: {
-        color: '#8CCEC5',
     },
     text: {
         fontSize: 17,
