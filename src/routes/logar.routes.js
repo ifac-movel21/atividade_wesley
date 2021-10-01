@@ -4,6 +4,8 @@ import {createStackNavigator} from '@react-navigation/stack';
 import { Home } from '../screens/Home';
 import { Index } from '../screens/Index';
 import { PerfilAluno } from '../screens/Perfil';
+import { PerfilEscola } from '../screens/PerfilEscola';
+import { CadastroDeAtividade } from '../screens/CadAtividade';
 
 const { Navigator, Screen} = createStackNavigator();
 
@@ -22,6 +24,14 @@ export function RotaLogin(){
             <Screen 
                 name="Home"
                 component={Home}
+            />
+            <Screen 
+                name="PerfilEscola"
+                component={PerfilEscola}
+            />
+            <Screen 
+                name="CadastrarAtividade"
+                component={CadastroDeAtividade}
             />
         </Navigator>
     );

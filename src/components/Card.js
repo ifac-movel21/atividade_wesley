@@ -1,40 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet} from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { useNavigation } from '@react-navigation/native';
 
-export function Card({backgroundColor, icone, text, number, iconColor, navScreen, ...rest}){
 
-    const [newNumber, setNumber] = useState('');
+export function Card({backgroundColor, arrowIcon, iconSize,
+    icone, textTitle, iconColor, navScreen, textSecondDescription, textFirstDescription, ...rest}){
 
-    useEffect(() => {
-        let x = parseInt(number);
-        if(number > 1){
-            setNumber('Atividades')
-        }else{
-            setNumber('Atividade')
-        }
-
-    },[number])
-
-    const navigation = useNavigation();
-
-    function handleAtividade(){
-        navigation.navigate(navScreen);
-    }
+    
 
     return(
-        <View style={[styles.cardContainer, {backgroundColor: backgroundColor}]}>
+        <TouchableOpacity 
+            style={[styles.cardContainer, {backgroundColor: backgroundColor}]}
+            activeOpacity={.7}
+            {...rest}
+        >
             <View style={styles.iconContainer}>
                 <FontAwesomeIcon icon={icone} size={30} color={iconColor} />
             </View>
-            <Text style={styles.text}> {text} </Text>
-            <Text style={styles.textPassos}> { number } {newNumber} </Text>
-            <Text style={styles.textPassos}> Faltando </Text>
+            <Text style={styles.text}> {textTitle} </Text>
+            <Text style={styles.textPassos}> { textFirstDescription } </Text>
+            <Text style={styles.textPassos}> { textSecondDescription } </Text>
             <View style={styles.line} />
-            <FontAwesomeIcon icon={faArrowRight} style={styles.arrow} size={25} onPress={handleAtividade} />
-        </View>
+          
+            <FontAwesomeIcon 
+                icon={arrowIcon} 
+                style={styles.arrow} 
+                size={iconSize}  
+            />
+        </TouchableOpacity>
     );
 }
 

@@ -1,19 +1,37 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, ScrollView, FlatList} from 'react-native';
-import { faBriefcase, faUserGraduate } from '@fortawesome/free-solid-svg-icons';
+import { View, Text, StyleSheet, Image } from 'react-native';
+import { faArrowRight, faSchool, faUserGraduate } from '@fortawesome/free-solid-svg-icons';
+import { useNavigation } from '@react-navigation/native';
 
 import { Card } from '../components/Card';
 import SvgIcon from '../../assets/box.svg';
-import { marginTop } from 'styled-system';
 
 export function PerfilAluno(){
+
+    const navigation = useNavigation();
+
+    function handleNavigateHome(){
+        navigation.navigate('CadastrarAtividade');
+    }
+    function handleNavigatePerfilEscola(){
+        navigation.navigate('PerfilEscola');
+    }
+
     return(
         <View style={styles.container}>
             {/*  */}
             <View style={styles.box}>
-                
-                <View height={'100%'} width={'100%'} alignItems={'center'}>
-                    <SvgIcon width={'100%'} height={'100%'} marginTop={-10} position={'relative'} zIndex={-1} />
+                <View 
+                    height={'100%'} 
+                    width={'100%'} 
+                    alignItems={'center'}
+                >
+                    <SvgIcon 
+                        width={'100%'} 
+                        height={'100%'} 
+                        marginTop={-10} 
+                        position={'relative'} 
+                        zIndex={-1} />
                     <Image 
                         style= {styles.picture}
                         source={{uri: 'https://github.com/leoncral.png'}}
@@ -45,25 +63,30 @@ export function PerfilAluno(){
                 </Text>
             </View>
             {/*  */}
-            {/* <View style={styles.cardProfileContainer}>
+            <View style={styles.cardProfileContainer}>
                 <Card 
                     backgroundColor={'#8CCEC5'}
                     icone={faUserGraduate}
-                    text={'Educação'}
-                    number={2}
+                    textTitle={'Educação'}
+                    textFirstDescription={'Cadastrar'}
+                    textSecondDescription={'Atividade'}
                     iconColor={'#8CCEC5'}
-                    navScreen={'Home'}
+                    arrowIcon={faArrowRight}
+                    iconSize={24}
+                    onPress={handleNavigateHome}
                 />
                 <Card 
                     backgroundColor={'#FFBB51'}
-                    icone={faBriefcase}
-                    text={'Profissional'}
-                    number={4}
+                    icone={faSchool}
+                    textTitle={'Instituição'}
+                    textFirstDescription={'Consultar'}
+                    textSecondDescription={'Escola'}
                     iconColor={'#FFBB51'}
-                    navScreen={'Index'}
+                    arrowIcon={faArrowRight}
+                    iconSize={24}
+                    onPress={handleNavigatePerfilEscola}
                 />
-            </View> */}
-            <ScrollView />
+            </View>
                
         </View>
     );
@@ -74,7 +97,6 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#FFF",
         paddingHorizontal: 30,
-        paddingTop: 40
     },
     box: {
         width: '100%',
@@ -123,15 +145,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         width: '100%',
-        height: '26%',
+        height: '32%',
         paddingHorizontal: 15,
         paddingVertical: 15,
-        marginTop: '5%'
+        marginTop: '2%',
     },
-    list: {
-        backgroundColor: '#F0F0F0',
-        borderRadius: 5,
-        maxHeight: '35%',
-        maxWidth: '100%'
-    }
 })
