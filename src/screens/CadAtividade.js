@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import { View, StyleSheet} from 'react-native';
+import firestore from '@react-native-firebase/firestore';
 
 import { TextoDosInput } from '../components/Texto';
 import { InputText } from '../components/InputText';
@@ -7,7 +8,16 @@ import { Botao } from '../components/Botao';
 
 export function CadastroDeAtividade(){
 
-    const [ newTarefa, setTarefa] = useState('')
+    const [ newTarefa, setTarefa] = useState('');
+    const ref = firestore().collection('atividade');
+
+    async function addTarefe(){
+        await ref.add({
+            title: newTarefa,
+            status: false,
+        });
+        setTarefa('')
+    }
 
     return(
         <View 
@@ -15,22 +25,25 @@ export function CadastroDeAtividade(){
         >
             {/* inicio do formulario */}
             <TextoDosInput 
-                upText="Cadastrar um nova atividade"
+                upText="Cadastre uma nova atividade!"
             />
             
             <TextoDosInput upText="Nome da atividade" />
             <InputText 
                 placeHolder="Atividade de inglês"
                 onChangeText={setTarefa}
+                value={newTarefa}
             />
             {/* Fim do formulario */}
             <Botao 
                 FontSize={16}
                 text={'Salvar'}
                 cor={'#059862'}
-                onPress={() => {}}
                 marginTop={10}
+                onPress={addTarefe}
             />
+
+            
         </View>
     );
 }

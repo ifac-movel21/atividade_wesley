@@ -40,7 +40,7 @@ export function Index(){
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#E7E7E7',
+        backgroundColor: '#8CCEC5',
         alignItems: 'center'
     },
     text: {
