@@ -31,7 +31,7 @@ export function PerfilEscola(){
                 <View style={styles.status}>
                     <Text style={styles.text}> Alunos</Text>
                     <Text style={styles.text}> Matriculados</Text>
-                    <Text style={styles.number}> 1028</Text>
+                    <Text style={styles.number}> 1080</Text>
                 </View>
             </View>
             {/*  */}

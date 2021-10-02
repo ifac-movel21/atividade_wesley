@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
-import { faArrowRight, faSchool, faUserGraduate } from '@fortawesome/free-solid-svg-icons';
+import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
+import { faArrowRight, faBasketballBall, faGraduationCap, faSchool, faUserGraduate } from '@fortawesome/free-solid-svg-icons';
 import { useNavigation } from '@react-navigation/native';
 
 import { Card } from '../components/Card';
@@ -16,9 +16,12 @@ export function PerfilAluno(){
     function handleNavigatePerfilEscola(){
         navigation.navigate('PerfilEscola');
     }
+    function handleNavigateListaDeAtividade(){
+        navigation.navigate('ListaDeAtividade');
+    }
 
     return(
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             {/*  */}
             <View style={styles.box}>
                 <View 
@@ -87,8 +90,31 @@ export function PerfilAluno(){
                     onPress={handleNavigatePerfilEscola}
                 />
             </View>
-               
-        </View>
+            <View style={styles.cardProfileContainer}>
+                <Card 
+                    backgroundColor={'#8CCEC5'}
+                    icone={faGraduationCap}
+                    textTitle={'Escolar'}
+                    textFirstDescription={'Lista de'}
+                    textSecondDescription={'Atividade'}
+                    iconColor={'#8CCEC5'}
+                    arrowIcon={faArrowRight}
+                    iconSize={24}
+                    onPress={handleNavigateListaDeAtividade}
+                />
+                <Card 
+                    backgroundColor={'#FFBB51'}
+                    icone={faBasketballBall}
+                    textTitle={'Esporte'}
+                    textFirstDescription={'Consultar'}
+                    textSecondDescription={'Lista'}
+                    iconColor={'#FFBB51'}
+                    arrowIcon={faArrowRight}
+                    iconSize={24}
+                    onPress={() => {}}
+                />
+            </View>
+        </ScrollView>
     );
 }
 
@@ -145,7 +171,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         width: '100%',
-        height: '32%',
+        height: 220,
         paddingHorizontal: 15,
         paddingVertical: 15,
         marginTop: '2%',

@@ -6,6 +6,7 @@ import { Index } from '../screens/Index';
 import { PerfilAluno } from '../screens/Perfil';
 import { PerfilEscola } from '../screens/PerfilEscola';
 import { CadastroDeAtividade } from '../screens/CadAtividade';
+import { ListaDeAtividade } from '../screens/ListaDeAtividade';
 
 const { Navigator, Screen} = createStackNavigator();
 
@@ -32,6 +33,10 @@ export function RotaLogin(){
             <Screen 
                 name="CadastrarAtividade"
                 component={CadastroDeAtividade}
+            />
+            <Screen 
+                name="ListaDeAtividade"
+                component={ListaDeAtividade}
             />
         </Navigator>
     );

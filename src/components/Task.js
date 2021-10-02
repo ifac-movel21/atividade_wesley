@@ -9,7 +9,7 @@ export default (props) => {
         >
             <>
                 <Text style={styles.texto}>
-                    {props.data.task}
+                    {props.data.title}
                 </Text>
                 
                 <View style={styles.checkButton} />

@@ -12,11 +12,15 @@ export function CadastroDeAtividade(){
     const ref = firestore().collection('atividade');
 
     async function addTarefe(){
-        await ref.add({
-            title: newTarefa,
-            status: false,
-        });
-        setTarefa('')
+        if (newTarefa === '') {
+            alert('Por favor, digite algo! Por exemplo: Atividade de inglês.')
+        } else
+           ref.add({
+                alunoId: '1',
+                title: newTarefa,
+                status: true,
+            });
+            setTarefa('')
     }
 
     return(
@@ -25,12 +29,14 @@ export function CadastroDeAtividade(){
         >
             {/* inicio do formulario */}
             <TextoDosInput 
-                upText="Cadastre uma nova atividade!"
+                upText="Cadastre as atividades que já foram feitas!"
             />
             
-            <TextoDosInput upText="Nome da atividade" />
+            <TextoDosInput 
+                upText="Nome da atividade" 
+            />
             <InputText 
-                placeHolder="Atividade de inglês"
+                placeHolder="Ex.: Atividade de inglês"
                 onChangeText={setTarefa}
                 value={newTarefa}
             />
@@ -42,8 +48,6 @@ export function CadastroDeAtividade(){
                 marginTop={10}
                 onPress={addTarefe}
             />
-
-            
         </View>
     );
 }

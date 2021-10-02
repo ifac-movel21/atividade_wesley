@@ -1,16 +1,35 @@
-import React from 'react';
-import { StyleSheet, FlatList} from 'react-native';
+import React, { useEffect, useState} from 'react';
+import { StyleSheet, FlatList, View} from 'react-native';
+import firestore from '@react-native-firebase/firestore';
 
 import Lista from './Lista';
 import Task from './Task';
 
 export function TaskList(...rest){
+
+    const [newTarefa, setTarefa] = useState([]);
+
+    useEffect(() => {
+        const taskCollection = firestore().collection('atividade').onSnapshot(querySnapshot => {
+            const list = [];
+            querySnapshot.forEach(doc => {
+                list.push({
+                    id: doc.id,
+                    ...doc.data()
+                });
+            });
+            setTarefa(list);
+        });
+        console.log(newTarefa)
+    }, [])
+
     return(
         
         <FlatList style={styles.blocOneText}
             nestedScrollEnabled={true}
             showsVerticalScrollIndicator={true} 
-            data={Lista}
+            data={newTarefa}
+            keyExtractor={(item) => item.id}
             renderItem={({item}) => <Task  data = {item} />}
         />
     );
@@ -24,3 +43,4 @@ const styles = StyleSheet.create({
         maxWidth: '100%'
     },
 })
+
