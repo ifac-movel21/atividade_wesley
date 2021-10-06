@@ -15,7 +15,6 @@ export function Index(){
     function handleLogar(){
         navigation.navigate('PerfilAluno');
     }
-    
     return(
         <View style={styles.container}>
             <Image
