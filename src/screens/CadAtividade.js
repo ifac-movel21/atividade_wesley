@@ -9,13 +9,14 @@ import { Botao } from '../components/Botao';
 export function CadastroDeAtividade(){
 
     const [ newTarefa, setTarefa] = useState('');
+    
     const ref = firestore().collection('atividade');
 
     async function addTarefe(){
         if (newTarefa === '') {
             alert('Por favor, digite algo! Por exemplo: Atividade de inglês.')
         } else
-           ref.add({
+        await ref.add({
                 alunoId: '1',
                 title: newTarefa,
                 status: true,
@@ -44,6 +45,9 @@ export function CadastroDeAtividade(){
             <Botao 
                 FontSize={16}
                 text={'Salvar'}
+                colorText={'#FFF'}
+                fontWeight={'600'}
+                width={'50%'}
                 cor={'#059862'}
                 marginTop={10}
                 onPress={addTarefe}

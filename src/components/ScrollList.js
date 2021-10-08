@@ -2,11 +2,11 @@ import React, { useEffect, useState} from 'react';
 import { StyleSheet, FlatList, View} from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 
-import Lista from './Lista';
 import Task from './Task';
 
-export function TaskList(...rest){
+export function TaskList(){
 
+    const [loading, setLoading] = useState(true);
     const [newTarefa, setTarefa] = useState([]);
 
     useEffect(() => {
@@ -19,12 +19,20 @@ export function TaskList(...rest){
                 });
             });
             setTarefa(list);
+
+            if(loading) {
+                setLoading(false);
+            }
         });
-        console.log(newTarefa)
+        //console.log(newTarefa)
+        
     }, [])
 
+        if (loading) {
+            return null;
+        }
+
     return(
-        
         <FlatList style={styles.blocOneText}
             nestedScrollEnabled={true}
             showsVerticalScrollIndicator={true} 

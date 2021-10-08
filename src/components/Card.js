@@ -56,12 +56,12 @@ const styles = StyleSheet.create({
     textPassos: {
         fontSize: 17,
         fontWeight: '900',
-        color: '#4F412A',
+        color: '#000',
     },
     line: {
         width: 65,
         height: 2,
-        backgroundColor: '#4F412A',
+        backgroundColor: '#000',
         marginLeft: 5,
         marginTop: 5
     },

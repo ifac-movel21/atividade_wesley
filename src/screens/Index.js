@@ -6,8 +6,8 @@ import {
     StyleSheet,
     Image
 }from 'react-native';
+import { marginLeft, marginTop } from 'styled-system';
 import { Botao } from '../components/Botao';
-import HomeImg from '../image/home-img.png'
 
 export function Index(){
     const navigation = useNavigation();
@@ -17,21 +17,27 @@ export function Index(){
     }
     return(
         <View style={styles.container}>
-            <Image
-                style={styles.img}
-                source={HomeImg}
-            />
+            
+            <View style={styles.textContainer}>
+                <Text style={styles.textGestor}>
+                    Gestor
+                </Text>
+                <Text style={styles.textEscola}>
+                    Escolar
+                </Text>
+            </View>
 
-            <Text style={styles.text}>
-                Gestor Escolar
-            </Text>
-
-            <Botao 
-                text={"Entrar"}
-                cor={'#059862'}
-                marginTop={100}
-                onPress={handleLogar}
-            />
+            <View style={styles.buttonContainer}>
+                <Botao 
+                    text={"Entrar"}
+                    colorText={'#000'}
+                    fontWeight={'700'}
+                    cor={'#8CCEC5'}
+                    marginTop={100}
+                    width={'70%'}
+                    onPress={handleLogar}
+                />
+            </View>
         </View>
     );
 }
@@ -42,14 +48,30 @@ const styles = StyleSheet.create({
         backgroundColor: '#8CCEC5',
         alignItems: 'center'
     },
-    text: {
-        fontSize: 56,
-        fontFamily: 'Nunito',
-        fontWeight: "bold",
-        color: '#008669',
-        marginTop: -40
+    textGestor: {
+        fontSize: 49,
+        fontWeight: "400",
+        color: '#FFF',
     },
-    img: {
-        marginTop: -60
-    }
+    textEscola: {
+        fontSize: 60,
+        fontWeight: "700",
+        color: '#FFF',
+
+        marginTop: -15,
+        marginLeft: 1
+    },
+    textContainer: {
+        width: '90%',
+        height: '50%',
+        alignItems: 'flex-start',
+        marginTop: 60
+    },
+    buttonContainer: {
+        backgroundColor: '#FFF',
+        height: '100%',
+        width: '100%',
+        borderTopLeftRadius: 30,
+        borderTopRightRadius: 30,
+    },
 })
