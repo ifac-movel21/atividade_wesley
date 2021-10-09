@@ -1,12 +1,11 @@
-import React, { useEffect, useState} from 'react';
-import { StyleSheet, FlatList, View} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, FlatList } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 
 import Task from './Task';
 
 export function TaskList(){
 
-    const [loading, setLoading] = useState(true);
     const [newTarefa, setTarefa] = useState([]);
 
     useEffect(() => {
@@ -19,18 +18,9 @@ export function TaskList(){
                 });
             });
             setTarefa(list);
-
-            if(loading) {
-                setLoading(false);
-            }
         });
         //console.log(newTarefa)
-        
     }, [])
-
-        if (loading) {
-            return null;
-        }
 
     return(
         <FlatList style={styles.blocOneText}

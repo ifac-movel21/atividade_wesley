@@ -15,6 +15,6 @@ const styles = StyleSheet.create({
         fontSize: 22,
         marginTop: 5,
         marginBottom: 5,
-        fontWeight: "bold"
+        fontFamily: 'Nunito-Bold'
     },
 })

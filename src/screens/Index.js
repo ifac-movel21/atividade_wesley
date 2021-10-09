@@ -20,7 +20,7 @@ export function Index(){
             
             <View style={styles.textContainer}>
                 <Text style={styles.textGestor}>
-                    Gestor
+                    gestor
                 </Text>
                 <Text style={styles.textEscola}>
                     Escolar
@@ -52,14 +52,15 @@ const styles = StyleSheet.create({
         fontSize: 49,
         fontWeight: "400",
         color: '#FFF',
+        fontFamily: 'Nunito-Regular'
     },
     textEscola: {
-        fontSize: 60,
+        fontSize: 63,
         fontWeight: "700",
-        color: '#FFF',
+        color: '#302753',
+        fontFamily: 'Nunito-Bold',
 
         marginTop: -15,
-        marginLeft: 1
     },
     textContainer: {
         width: '90%',

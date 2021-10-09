@@ -30,11 +30,13 @@ export function CadastroDeAtividade(){
         >
             {/* inicio do formulario */}
             <TextoDosInput 
-                upText="Cadastre as atividades que já foram feitas!"
+                upText="Cadastre as suas atividades!"
+                color={'#000'}
             />
             
             <TextoDosInput 
                 upText="Nome da atividade" 
+                color={'#000'}
             />
             <InputText 
                 placeHolder="Ex.: Atividade de inglês"
